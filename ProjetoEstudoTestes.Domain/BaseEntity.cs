@@ -1,7 +1,14 @@
-﻿namespace ProjetoEstudoTestes.Domain
+﻿using Flunt.Notifications;
+
+namespace ProjetoEstudoTestes.Domain
 {
-    public class BaseEntity
+    public class BaseEntity : Notifiable<Notification>
     {
+
+        public BaseEntity()
+        {
+                Id = Guid.NewGuid();
+        }
         public Guid Id { get; set; }
         public DateTime EditedOn { get; set; }
         public Users EditeBy { get; set; }
