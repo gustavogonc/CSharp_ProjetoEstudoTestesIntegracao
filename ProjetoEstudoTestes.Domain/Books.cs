@@ -23,7 +23,7 @@ namespace ProjetoEstudoTestes.Domain
             PublicationYear = publicationYear;
             CopiesAvailable = copiesAvailable;
             EditedOn = DateTime.Now;
-            DateTime = DateTime.Now;
+            CreatedOn = DateTime.Now;
 
             Validate();
         }

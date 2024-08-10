@@ -22,7 +22,7 @@ namespace ProjetoEstudoTestes.Domain
             Email = email;
             PhoneNumber = phoneNumber;
             EditedOn = DateTime.Now;
-            DateTime = DateTime.Now;
+            CreatedOn = DateTime.Now;
 
             Validate();
         }

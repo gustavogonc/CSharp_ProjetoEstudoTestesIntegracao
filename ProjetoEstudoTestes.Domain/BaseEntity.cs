@@ -7,12 +7,12 @@ namespace ProjetoEstudoTestes.Domain
 
         public BaseEntity()
         {
-                Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         public Guid Id { get; set; }
         public DateTime EditedOn { get; set; }
-        public Users EditeBy { get; set; }
-        public Users CreatedBy { get; set; } 
-        public DateTime DateTime { get; set; }
+        public Guid EditeBy { get; set; }
+        public Guid CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }
