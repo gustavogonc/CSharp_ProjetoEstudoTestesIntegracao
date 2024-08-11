@@ -22,11 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\ProjetoEstudoTestes.Domain\ProjetoEstudoTestes.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjetoEstudoTestes.Domain\ProjetoEstudoTestes.Domain.csproj" />
+    <Folder Include="Controllers\Users.cs\" />
   </ItemGroup>
 
 </Project>
