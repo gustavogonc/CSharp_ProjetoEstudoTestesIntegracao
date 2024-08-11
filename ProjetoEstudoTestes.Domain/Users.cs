@@ -5,6 +5,7 @@ namespace ProjetoEstudoTestes.Domain
     public sealed class Users : BaseEntity
     {
         public string Name { get; set; }
+        public string Password { get; set; }    
         public Guid Role { get; set; }
         public string? Email { get ; set; }  
         public string? PhoneNumber { get; set; }
@@ -15,11 +16,12 @@ namespace ProjetoEstudoTestes.Domain
             
         }
 
-        public Users(string name, Guid role, string? email, string? phoneNumber)
+        public Users(string name, string password, Guid role, string? email, string? phoneNumber)
         {
             Name = name;
             Role = role;
             Email = email;
+            Password = password;
             PhoneNumber = phoneNumber;
             EditedOn = DateTime.Now;
             CreatedOn = DateTime.Now;
@@ -30,9 +32,10 @@ namespace ProjetoEstudoTestes.Domain
         private void Validate()
         {
             var contract = new Contract<Users>()
-                .IsNullOrEmpty(Name, "Name", "O nome do usuário não pode estar em branco")
-                .IsNullOrWhiteSpace(Name, "Name", "O nome do usuário não pode estar sem caracteres")
-                .IsGreaterThan(Name, 10, "Name", "O nome precisa ter mais de 10 caracteres");
+                .IsNotNullOrEmpty(Name, "Name", "O nome do usuário não pode estar em branco")
+                .IsNotNullOrWhiteSpace(Name, "Name", "O nome do usuário não pode estar sem caracteres")
+                .IsGreaterOrEqualsThan(Name, 10, "Name", "O nome precisa ter mais de 10 caracteres")
+                .IsNotNullOrEmpty(Password, "Password", "Senha não pode estar em branco ou ser null");
 
 
             AddNotifications(contract);
@@ -49,6 +52,4 @@ namespace ProjetoEstudoTestes.Domain
             Validate();
         }
     }
-
-    
 }

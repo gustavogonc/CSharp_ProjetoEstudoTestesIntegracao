@@ -1,4 +1,7 @@
-﻿using ProjetoEstudoTestes.Repositories.UsersRepository;
+﻿using ProjetoEstudoTestes.Controllers;
+using ProjetoEstudoTestes.Domain;
+using ProjetoEstudoTestes.Domain.Requests;
+using ProjetoEstudoTestes.Repositories.UsersRepository;
 
 namespace ProjetoEstudoTestes.Business.UserBusiness
 {
@@ -9,9 +12,30 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
         {
             _userRepository = userRepository;
         }
+
+        public async Task<IResult> CreateUserAsync(UserCreateRequest userRequest)
+        {
+            var list = await _userRepository.UsersListAsync();
+
+            if (list.Any(c => c.Email.Equals(userRequest.email, StringComparison.OrdinalIgnoreCase)))
+            {
+                return Results.BadRequest("Usuário já cadastrado");
+            }
+
+            Users user = new Users(userRequest.userName, userRequest.password, Guid.NewGuid(), userRequest.email, userRequest.phone);
+
+            if (!user.IsValid)
+            {
+                return Results.ValidationProblem(user.Notifications.ConvertToProblemDetails());
+            }
+
+            await _userRepository.NewUserAsync(user);
+            return Results.Ok(user.Id);
+        }
+
         public async Task<IResult> ListUsersAsync()
         {
-            var list =  await _userRepository.UsersListAsync();
+            var list = await _userRepository.UsersListAsync();
 
             if (list is null)
             {

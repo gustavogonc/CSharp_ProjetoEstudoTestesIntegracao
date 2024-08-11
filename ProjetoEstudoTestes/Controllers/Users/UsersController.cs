@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoEstudoTestes.Business.UserBusiness;
+using ProjetoEstudoTestes.Domain.Requests;
 
 namespace ProjetoEstudoTestes.Controllers.Users
 {
@@ -12,10 +13,18 @@ namespace ProjetoEstudoTestes.Controllers.Users
         {
             _usersBusiness = userBusiness;
         }
+
+
         [HttpGet]
         public async Task<IResult> UsersList()
         {
             return await _usersBusiness.ListUsersAsync();
+        }
+
+        [HttpPost]
+        public async Task<IResult> CreateUser([FromBody] UserCreateRequest userRequest)
+        {
+            return await _usersBusiness.CreateUserAsync(userRequest);
         }
     }
 }
