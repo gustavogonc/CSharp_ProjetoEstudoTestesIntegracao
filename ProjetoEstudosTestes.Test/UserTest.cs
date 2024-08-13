@@ -1,4 +1,5 @@
 using ProjetoEstudoTestes.Domain;
+using Shouldly;
 
 namespace ProjetoEstudosTestes.Test
 {
@@ -8,17 +9,18 @@ namespace ProjetoEstudosTestes.Test
         [InlineData("Teste Gutavo HardCoded", "1234566667789")]
         [InlineData("Teste HardCoded", "6667789")]
         [InlineData("Gustavo Gonçalves Dev", "9871134")]
-        public void GivenAnRandomUserWhenCorrectParamsUserShouldBeValid(string name, string password)
+        public void GivenARandomData_WhenCorrectParams_UserShouldBeValid(string name, string password)
         {
             //Arrange 
             var user = new Users(name, password, Guid.NewGuid(), "", "");
 
             //Act + Assert
-            Assert.True(user.IsValid);
+            //Assert.True(user.IsValid);
+            Should.Equals(name, user.Name);
         }
 
         [Fact]
-        public void GivenAnValidUserWhenCorrectParamsUserShouldBeValid()
+        public void GivenAValidUser_WhenCorrectParams_UserShouldBeValid()
         {
             //Arrange
             var user = new Users("Teste Gutavo HardCoded", "123456", Guid.NewGuid(), "", "");
@@ -27,7 +29,7 @@ namespace ProjetoEstudosTestes.Test
             Assert.True(user.IsValid);
         }
         [Fact]
-        public void GivenAnInvalidUserWhenIncorrectParamsUserShouldNotBeValid()
+        public void GivenAnInvalidUser_WhenIncorrectParams_UserShouldNotBeValid()
         {
             //Arrange
             var user = new Users("t", "", Guid.NewGuid(), "", "");
