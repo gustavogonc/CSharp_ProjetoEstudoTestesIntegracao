@@ -1,4 +1,5 @@
-﻿using ProjetoEstudoTestes.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoEstudoTestes.Context;
 using ProjetoEstudoTestes.Domain;
 
 namespace ProjetoEstudoTestes.Repositories.BooksRepository
@@ -14,6 +15,11 @@ namespace ProjetoEstudoTestes.Repositories.BooksRepository
         public IEnumerable<Books> ListBooks()
         {
             return _context.books.AsEnumerable();
+        }
+
+        public async Task<Books> LitBookByIdAsync(Guid id)
+        {
+            return await _context.books.FirstOrDefaultAsync(b => b.Id.Equals(id));
         }
     }
 }

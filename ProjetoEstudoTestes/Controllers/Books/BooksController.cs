@@ -19,5 +19,12 @@ namespace ProjetoEstudoTestes.Controllers.Books
             var result = _bookBusiness.ListAllBooks();
             return Results.Ok(result);
         }
+
+        [HttpGet("{id:guid}")]
+        public async Task<IResult> ListBookId(Guid id)
+        {
+            var result = await _bookBusiness.ListBookByIdAsync(id);
+            return Results.Ok(result);
+        }
     }
 }
