@@ -1,5 +1,4 @@
-﻿using ProjetoEstudoTestes.Domain;
-using ProjetoEstudoTestes.Domain.Requests;
+﻿using ProjetoEstudoTestes.Domain.Requests;
 
 namespace ProjetoEstudoTestes.Business.UserBusiness
 {

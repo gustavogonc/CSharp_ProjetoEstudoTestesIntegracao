@@ -1,7 +1,9 @@
-﻿namespace ProjetoEstudoTestes.Repositories.BooksRepository
+﻿using ProjetoEstudoTestes.Domain;
+
+namespace ProjetoEstudoTestes.Repositories.BooksRepository
 {
     public interface IBookRepository
     {
-        IQueryable ListBooksAsync();
+        IEnumerable<Books> ListBooks();
     }
 }

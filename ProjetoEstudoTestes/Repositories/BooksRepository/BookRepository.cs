@@ -1,4 +1,5 @@
 ﻿using ProjetoEstudoTestes.Context;
+using ProjetoEstudoTestes.Domain;
 
 namespace ProjetoEstudoTestes.Repositories.BooksRepository
 {
@@ -10,9 +11,9 @@ namespace ProjetoEstudoTestes.Repositories.BooksRepository
             _context = context;
         }
 
-        public IQueryable ListBooksAsync()
+        public IEnumerable<Books> ListBooks()
         {
-            return _context.books.AsQueryable();
+            return _context.books.AsEnumerable();
         }
     }
 }
