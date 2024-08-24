@@ -1,7 +1,5 @@
-using ProjetoEstudoTestes.Business.UserBusiness;
 using ProjetoEstudoTestes.Domain;
 using ProjetoEstudoTestes.Testes.Test.DataBuilder;
-using Shouldly;
 
 namespace ProjetoEstudosTestes.Test
 {
@@ -17,8 +15,7 @@ namespace ProjetoEstudosTestes.Test
             var user = new Users(name, password, Guid.NewGuid(), "", "");
 
             //Act + Assert
-            //Assert.True(user.IsValid);
-            Should.Equals(name, user.Name);
+            Assert.True(user.IsValid);
         }
 
         [Fact]

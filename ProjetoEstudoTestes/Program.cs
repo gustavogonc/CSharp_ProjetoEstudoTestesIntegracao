@@ -1,5 +1,6 @@
 using ProjetoEstudoTestes.Business.UserBusiness;
 using ProjetoEstudoTestes.Context;
+using ProjetoEstudoTestes.Repositories.BooksRepository;
 using ProjetoEstudoTestes.Repositories.UsersRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddSqlServer<ApplicationDbContext>(connectionString);
 builder.Services.AddScoped<ApplicationDbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserBusiness, UserBusiness>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

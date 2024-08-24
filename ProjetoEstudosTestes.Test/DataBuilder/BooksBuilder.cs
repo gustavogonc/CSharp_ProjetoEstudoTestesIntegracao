@@ -19,7 +19,7 @@ namespace ProjetoEstudosTestes.Test.DataBuilder
                 .RuleFor(c => c.EditedOn, f => f.Date.Recent(10))
                 .RuleFor(c => c.CreatedOn, f => f.Date.Recent(5))
                 .RuleFor(c => c.PublicationYear, f => f.Date.Between(minYear, maxYear).Year)
-                .RuleFor(c => c.CopiesAvailable, f => f.Random.Number(100))
+                .RuleFor(c => c.CopiesAvailable, f => f.Random.Number(1, 100))
                 .Generate();
 
             return books;
