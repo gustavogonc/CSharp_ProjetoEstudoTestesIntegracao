@@ -1,6 +1,6 @@
 ﻿using ProjetoEstudoTestes.Domain;
+using ProjetoEstudoTestes.Domain.Requests.Book;
 using ProjetoEstudoTestes.Repositories.BooksRepository;
-using System.Collections.Generic;
 
 namespace ProjetoEstudoTestes.Business.Book
 {
@@ -11,7 +11,6 @@ namespace ProjetoEstudoTestes.Business.Book
         {
             _bookRepository = bookRepository;
         }
-
         public IEnumerable<Books> ListAllBooks()
         {
             var list = _bookRepository.ListBooks();
@@ -22,6 +21,12 @@ namespace ProjetoEstudoTestes.Business.Book
         {
             var result = await _bookRepository.LitBookByIdAsync(id);
             return result is null ? throw new ArgumentNullException("Livro não encontrado pelo id") : result;
+        }
+
+        public async Task<Guid> CreateBookAsync(BookCreateRequest request)
+        {
+            var resultCreated = await  _bookRepository.CreateBookAsync(request);
+            return resultCreated;
         }
     }
 }

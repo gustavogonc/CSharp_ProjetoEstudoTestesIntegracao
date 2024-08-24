@@ -24,5 +24,11 @@ namespace ProjetoEstudoTestes.Repositories.UsersRepository
         {
             return await _context.users.ToListAsync();
         }
+
+        public async Task<Users> ListBooksCreatedByUserAsync(Guid id)
+        {
+            return await _context.users.Include(b => b.Books)
+                                        .FirstOrDefaultAsync(u => u.Id.Equals(id));
+        }
     }
 }

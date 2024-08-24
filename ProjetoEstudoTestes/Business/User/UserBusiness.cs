@@ -1,6 +1,6 @@
 ﻿using ProjetoEstudoTestes.Controllers;
 using ProjetoEstudoTestes.Domain;
-using ProjetoEstudoTestes.Domain.Requests;
+using ProjetoEstudoTestes.Domain.Requests.User;
 using ProjetoEstudoTestes.Repositories.UsersRepository;
 
 namespace ProjetoEstudoTestes.Business.UserBusiness
@@ -31,6 +31,12 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
 
             await _userRepository.NewUserAsync(user);
             return Results.Ok(user.Id);
+        }
+
+        public async Task<IResult> ListBooksCreatedByUserAsync(Guid id)
+        {
+            var result = await _userRepository.ListBooksCreatedByUserAsync(id);
+            return Results.Ok(result);
         }
 
         public async Task<IResult> ListUsersAsync()

@@ -6,5 +6,6 @@ namespace ProjetoEstudoTestes.Repositories.UsersRepository
     {
         Task<IEnumerable<Users>> UsersListAsync();
         Task<Guid> NewUserAsync(Users user);
+        Task<Users> ListBooksCreatedByUserAsync(Guid id);
     }
 }

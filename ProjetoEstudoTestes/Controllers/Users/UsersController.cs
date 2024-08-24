@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoEstudoTestes.Business.UserBusiness;
-using ProjetoEstudoTestes.Domain.Requests;
+using ProjetoEstudoTestes.Domain.Requests.User;
 
 namespace ProjetoEstudoTestes.Controllers.Users
 {
@@ -19,6 +19,12 @@ namespace ProjetoEstudoTestes.Controllers.Users
         public async Task<IResult> UsersList()
         {
             return await _usersBusiness.ListUsersAsync();
+        }
+
+        [HttpGet("user/{id:guid}")]
+        public async Task<IResult> UserWithBooks(Guid id)
+        {
+            return await _usersBusiness.ListBooksCreatedByUserAsync(id);
         }
 
         [HttpPost]

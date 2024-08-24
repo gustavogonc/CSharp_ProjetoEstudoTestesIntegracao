@@ -1,9 +1,11 @@
 ﻿using Flunt.Validations;
+using System.Text.Json.Serialization;
 
 namespace ProjetoEstudoTestes.Domain
 {
     public sealed class Books : BaseEntity
     {
+        [JsonIgnore]
         public Users User { get; set; }
         public Guid UserId { get; set; }
         public string Title { get; set; }   

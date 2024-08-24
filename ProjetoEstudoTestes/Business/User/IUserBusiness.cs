@@ -1,4 +1,4 @@
-﻿using ProjetoEstudoTestes.Domain.Requests;
+﻿using ProjetoEstudoTestes.Domain.Requests.User;
 
 namespace ProjetoEstudoTestes.Business.UserBusiness
 {
@@ -6,5 +6,6 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
     {
         Task<IResult> ListUsersAsync();
         Task<IResult> CreateUserAsync(UserCreateRequest userRequest);
+        Task<IResult> ListBooksCreatedByUserAsync(Guid id);
     }
 }
