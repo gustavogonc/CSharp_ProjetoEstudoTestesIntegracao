@@ -11,10 +11,10 @@ namespace ProjetoEstudoTestes.Business.Book
             _bookRepository = bookRepository;
         }
 
-        public IEnumerable<Books> ListAllBooksAsync()
+        public IEnumerable<Books> ListAllBooks()
         {
             var list = _bookRepository.ListBooks();
-            return list is null ? throw new ArgumentNullException("Nenhum livro encontrado") : list;
+            return list.Count() == 0 ? throw new ArgumentNullException("Nenhum livro encontrado") : list;
         }
     }
 }

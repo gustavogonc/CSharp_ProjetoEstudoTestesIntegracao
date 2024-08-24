@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoEstudoTestes.Business.Book;
 
 namespace ProjetoEstudoTestes.Controllers.Books
 {
@@ -7,15 +7,17 @@ namespace ProjetoEstudoTestes.Controllers.Books
     [ApiController]
     public class BooksController : ControllerBase
     {
-        public BooksController()
+        private readonly IBookBusiness _bookBusiness;
+        public BooksController(IBookBusiness bookBusiness)
         {
-            
+            _bookBusiness = bookBusiness;
         }
 
         [HttpGet]
         public async Task<IResult> ListBooks()
         {
-
+            var result = _bookBusiness.ListAllBooks();
+            return Results.Ok(result);
         }
     }
 }

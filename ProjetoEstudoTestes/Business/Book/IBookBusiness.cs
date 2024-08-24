@@ -3,6 +3,6 @@ namespace ProjetoEstudoTestes.Business.Book
 {
     public interface IBookBusiness
     {
-        IEnumerable<Books> ListAllBooksAsync();
+        IEnumerable<Books> ListAllBooks();
     }
 }
