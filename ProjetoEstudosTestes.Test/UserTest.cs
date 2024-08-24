@@ -1,4 +1,6 @@
+using ProjetoEstudoTestes.Business.UserBusiness;
 using ProjetoEstudoTestes.Domain;
+using ProjetoEstudoTestes.Testes.Test.DataBuilder;
 using Shouldly;
 
 namespace ProjetoEstudosTestes.Test
@@ -36,6 +38,16 @@ namespace ProjetoEstudosTestes.Test
 
             //Act + Assert
             Assert.False(user.IsValid);
+        }
+
+        [Fact]
+        public void GivenARandomUser_WhenCorrectParams_UserShouldBeValid()
+        {
+            //Arrange
+            var user = new UsersBuilder().Build();
+
+            //Act + Assert
+            Assert.True(user.IsValid);
         }
     }
 }
