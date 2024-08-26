@@ -51,8 +51,13 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
             return Results.Ok(list);
         }
 
-        public async Task<IResult> UpdateUserAsync(UserUpdateRequest user)
+        public async Task<IResult> UpdateUserAsync(Guid id, UserUpdateRequest user)
         {
+            if (id != user.id)
+            {
+                return Results.BadRequest("Os ids precisam ser iguais");
+            }
+
             var oldUser = await _userRepository.UserByIdAsync(user.id);
 
             if (oldUser is null)
@@ -80,7 +85,7 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
 
             if (oldUser is null)
             {
-                return Results.BadRequest("O usuário não foi encontrado");
+                return Results.NotFound("O usuário não foi encontrado");
             }
 
             oldUser.Active = false;
