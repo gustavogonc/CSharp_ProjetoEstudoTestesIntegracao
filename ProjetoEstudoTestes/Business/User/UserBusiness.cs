@@ -50,5 +50,24 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
 
             return Results.Ok(list);
         }
+
+        public async Task<IResult> UpdateUserAsync(UserUpdateRequest user)
+        {
+            var oldUser = await _userRepository.UserByIdAsync(user.id);
+
+            if (oldUser is null)
+            {
+                return Results.BadRequest("O usuário não foi encontrado");
+            }
+
+            oldUser.Email = user.email is null ?oldUser.Email : user.email;
+            oldUser.Password = user.password is null ? oldUser.Password : user.password;
+            oldUser.Role = user.role is null ? oldUser.Role : (Guid)user.role;
+
+            var updatedUser = _userRepository.UpdateUserAsync(oldUser);
+
+            return Results.Ok(updatedUser);
+
+        }
     }
 }

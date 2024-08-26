@@ -32,5 +32,11 @@ namespace ProjetoEstudoTestes.Controllers.Users
         {
             return await _usersBusiness.CreateUserAsync(userRequest);
         }
+
+        [HttpPut]
+        public async Task<IResult> UpdateUser([FromBody] UserUpdateRequest userUpdateRequest)
+        {
+            return await _usersBusiness.UpdateUserAsync(userUpdateRequest);
+        }
     }
 }
