@@ -8,5 +8,6 @@ namespace ProjetoEstudoTestes.Business.Book
         Task<Books> ListBookByIdAsync(Guid id);
         Task<Guid> CreateBookAsync(BookCreateRequest request);
         Task<IResult> UpdateBookAsync(Guid id, BookUpdateRequest request);
+        Task<IResult> DeleteBookAsync(Guid id, Guid bodyId);
     }
 }

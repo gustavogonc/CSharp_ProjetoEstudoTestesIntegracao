@@ -41,6 +41,10 @@ namespace ProjetoEstudoTestes.Controllers.Books
             return await _bookBusiness.UpdateBookAsync(id, request);
         }
 
-
+        [HttpDelete("{id:guid}")]
+        public async Task<IResult> DeleteBook(Guid id, [FromBody] Guid bodyId)
+        {
+            return await _bookBusiness.DeleteBookAsync(id , bodyId);
+        }
     }
 }

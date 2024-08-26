@@ -14,13 +14,13 @@ namespace ProjetoEstudoTestes.Business.Book
         public IEnumerable<Books> ListAllBooks()
         {
             var list = _bookRepository.ListBooks();
-            return list.Count() == 0 ? throw new ArgumentNullException("Nenhum livro encontrado") : list;
+            return list.Count() == 0 ? throw new ArgumentNullException("No books") : list;
         }
 
         public async Task<Books> ListBookByIdAsync(Guid id)
         {
             var result = await _bookRepository.BookByIdAsync(id);
-            return result is null ? throw new ArgumentNullException("Livro não encontrado pelo id") : result;
+            return result is null ? throw new ArgumentNullException("Book not found") : result;
         }
 
         public async Task<Guid> CreateBookAsync(BookCreateRequest request)
@@ -33,14 +33,14 @@ namespace ProjetoEstudoTestes.Business.Book
         {
             if (id != request.id)
             {
-                return Results.BadRequest("Os ids precisam ser iguais");
+                return Results.BadRequest("Ids doesn't match");
             }
 
             var oldBook = await _bookRepository.BookByIdAsync(request.id);
 
             if (oldBook is null)
             {
-                return Results.NotFound("Usuário não encontrado");
+                return Results.NotFound("Book not found");
             }
 
             oldBook.Author = request.author is null ? oldBook.Author : request.author;
@@ -51,6 +51,26 @@ namespace ProjetoEstudoTestes.Business.Book
 
             var result = await _bookRepository.UpdateBookAsync(oldBook);
             return Results.Ok(result);
+        }
+
+        public async Task<IResult> DeleteBookAsync(Guid id, Guid bodyId)
+        {
+            if (id != bodyId)
+            {
+                return Results.BadRequest("Ids doesn't match");
+            }
+
+            var oldBook = await _bookRepository.BookByIdAsync(id);
+
+            if (oldBook is null)
+            {
+                return Results.NotFound("Book not found");
+            }
+
+            oldBook.Active = false;
+            var updatedBook = await _bookRepository.UpdateBookAsync(oldBook);
+
+            return Results.Ok(updatedBook);
         }
     }
 }
