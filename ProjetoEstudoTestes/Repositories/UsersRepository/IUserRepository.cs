@@ -1,4 +1,5 @@
 ﻿using ProjetoEstudoTestes.Domain;
+using ProjetoEstudoTestes.Domain.Requests.User;
 
 namespace ProjetoEstudoTestes.Repositories.UsersRepository
 {
@@ -7,5 +8,7 @@ namespace ProjetoEstudoTestes.Repositories.UsersRepository
         Task<IEnumerable<Users>> UsersListAsync();
         Task<Guid> NewUserAsync(Users user);
         Task<Users> ListBooksCreatedByUserAsync(Guid id);
+        Task<Users> UpdateUserAsync(Users user);
+        Task<Users> UserByIdAsync(Guid id);
     }
 }

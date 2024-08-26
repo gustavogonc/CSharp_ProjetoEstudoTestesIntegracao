@@ -21,7 +21,7 @@ namespace ProjetoEstudoTestes.Controllers.Users
             return await _usersBusiness.ListUsersAsync();
         }
 
-        [HttpGet("user/{id:guid}")]
+        [HttpGet("{id:guid}")]
         public async Task<IResult> UserWithBooks(Guid id)
         {
             return await _usersBusiness.ListBooksCreatedByUserAsync(id);

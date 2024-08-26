@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjetoEstudoTestes.Context;
 using ProjetoEstudoTestes.Domain;
+using ProjetoEstudoTestes.Domain.Requests.User;
 
 namespace ProjetoEstudoTestes.Repositories.UsersRepository
 {
@@ -29,6 +30,19 @@ namespace ProjetoEstudoTestes.Repositories.UsersRepository
         {
             return await _context.users.Include(b => b.Books)
                                         .FirstOrDefaultAsync(u => u.Id.Equals(id));
+        }
+
+        public async Task<Users> UserByIdAsync(Guid id)
+        {
+            return await _context.users.FirstOrDefaultAsync(u => u.Id.Equals(id));
+        }
+
+        public async Task<Users> UpdateUserAsync(Users user)
+        {
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return user;
         }
     }
 }
