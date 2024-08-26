@@ -14,5 +14,6 @@ namespace ProjetoEstudoTestes.Domain
         public Guid EditeBy { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
+        public bool Active { get; set; } = true;
     }
 }

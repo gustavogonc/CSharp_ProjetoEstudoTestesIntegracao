@@ -8,5 +8,6 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
         Task<IResult> CreateUserAsync(UserCreateRequest userRequest);
         Task<IResult> ListBooksCreatedByUserAsync(Guid id);
         Task<IResult> UpdateUserAsync(UserUpdateRequest user);
+        Task<IResult> DeleteUserAsync(Guid id, Guid idBody);
     }
 }

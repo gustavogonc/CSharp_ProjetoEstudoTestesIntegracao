@@ -38,5 +38,11 @@ namespace ProjetoEstudoTestes.Controllers.Users
         {
             return await _usersBusiness.UpdateUserAsync(userUpdateRequest);
         }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IResult> DeleteUser(Guid id, [FromBody] Guid idBody)
+        {
+            return await _usersBusiness.DeleteUserAsync(id, idBody);
+        }
     }
 }

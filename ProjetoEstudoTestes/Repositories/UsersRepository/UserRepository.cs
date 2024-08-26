@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjetoEstudoTestes.Context;
 using ProjetoEstudoTestes.Domain;
-using ProjetoEstudoTestes.Domain.Requests.User;
 
 namespace ProjetoEstudoTestes.Repositories.UsersRepository
 {

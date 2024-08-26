@@ -67,7 +67,27 @@ namespace ProjetoEstudoTestes.Business.UserBusiness
             var updatedUser = _userRepository.UpdateUserAsync(oldUser);
 
             return Results.Ok(updatedUser);
+        }
 
+        public async Task<IResult> DeleteUserAsync(Guid id, Guid idBody)
+        {
+            if (id != idBody) 
+            {
+                return Results.BadRequest("Os ids precisam ser iguais");
+            }
+
+            var oldUser = await _userRepository.UserByIdAsync(id);
+
+            if (oldUser is null)
+            {
+                return Results.BadRequest("O usuário não foi encontrado");
+            }
+
+            oldUser.Active = false;
+
+            await _userRepository.UpdateUserAsync(oldUser);
+
+            return Results.NoContent(); 
         }
     }
 }

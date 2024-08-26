@@ -1,5 +1,4 @@
 ﻿using ProjetoEstudoTestes.Domain;
-using ProjetoEstudoTestes.Domain.Requests.User;
 
 namespace ProjetoEstudoTestes.Repositories.UsersRepository
 {
