@@ -41,10 +41,17 @@ namespace ProjetoEstudoTestes.Repositories.BooksRepository
             return _context.books.AsNoTracking().AsEnumerable();
         }
 
-        public async Task<Books> LitBookByIdAsync(Guid id)
+        public async Task<Books> BookByIdAsync(Guid id)
         {
-            return await _context.books.AsNoTracking()
-                                       .FirstOrDefaultAsync(b => b.Id.Equals(id));
+            return await _context.books.FirstOrDefaultAsync(b => b.Id.Equals(id));
+        }
+
+        public async Task<Books> UpdateBookAsync(Books book)
+        {
+            _context.books.Update(book);
+            await _context.SaveChangesAsync();
+
+            return book;
         }
     }
 }

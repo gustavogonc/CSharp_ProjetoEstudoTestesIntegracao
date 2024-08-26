@@ -6,7 +6,8 @@ namespace ProjetoEstudoTestes.Repositories.BooksRepository
     public interface IBookRepository
     {
         IEnumerable<Books> ListBooks();
-        Task<Books> LitBookByIdAsync(Guid id);
+        Task<Books> BookByIdAsync(Guid id);
         Task<Guid> CreateBookAsync(BookCreateRequest request);
+        Task<Books> UpdateBookAsync(Books book);  
     }
 }

@@ -34,5 +34,11 @@ namespace ProjetoEstudoTestes.Controllers.Books
             var result = await _bookBusiness.CreateBookAsync(request);
             return Results.Ok(result);
         }
+
+        [HttpPut("{id:guid}")]
+        public async Task<IResult> UpdateBook(Guid id, [FromBody] BookUpdateRequest request)
+        {
+            return await _bookBusiness.UpdateBookAsync(id, request);
+        }
     }
 }

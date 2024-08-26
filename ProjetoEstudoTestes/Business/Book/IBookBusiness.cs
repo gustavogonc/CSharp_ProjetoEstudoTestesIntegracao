@@ -7,5 +7,6 @@ namespace ProjetoEstudoTestes.Business.Book
         IEnumerable<Books> ListAllBooks();
         Task<Books> ListBookByIdAsync(Guid id);
         Task<Guid> CreateBookAsync(BookCreateRequest request);
+        Task<IResult> UpdateBookAsync(Guid id, BookUpdateRequest request);
     }
 }
